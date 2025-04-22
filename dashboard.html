@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Complainant ANPR Dashboard</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    /* Background for the whole page */
+    body {
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80')
+        no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      color: #f8f9fa;
+    }
+
+    /* Overlay to darken the background image for readability */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: -1;
+    }
+
+    /* Sidebar styling */
+    .sidebar {
+      min-height: 100vh;
+      background: url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80')
+        no-repeat center center;
+      background-size: cover;
+      position: sticky;
+      top: 0;
+      color: #fff;
+      box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.7); /* dark overlay */
+    }
+
+    .sidebar h4 {
+      padding: 1.5rem 1rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+    }
+
+    .sidebar a {
+      color: #ddd;
+      text-decoration: none;
+      display: block;
+      padding: 1rem 1.5rem;
+      font-weight: 500;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .sidebar a.active,
+    .sidebar a:hover {
+      background-color: #0d6efd;
+      color: #fff;
+      border-radius: 0 20px 20px 0;
+      text-shadow: none;
+    }
+
+    /* Main content area */
+    main {
+      background-color: rgba(255, 255, 255, 0.95);
+      color: #212529;
+      min-height: 100vh;
+      padding: 2rem 2rem 4rem 2rem;
+      border-radius: 15px 0 0 15px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Heading */
+    main h2 {
+      font-weight: 700;
+      color: #0d6efd;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Cards */
+    .dashboard-card {
+      background: linear-gradient(135deg, #0d6efd, #6610f2);
+      color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(13, 110, 253, 0.4);
+      padding: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .dashboard-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.6);
+    }
+
+    .dashboard-card h5 {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .dashboard-card p {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    /* Table card */
+    .card {
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+      font-weight: 600;
+      font-size: 1.25rem;
+      background-color: #0d6efd;
+      color: #fff;
+      border-radius: 12px 12px 0 0;
+    }
+
+    /* Table styling */
+    table.table {
+      margin-bottom: 0;
+    }
+
+    table.table thead th {
+      border-bottom: 2px solid #0d6efd;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 767.98px) {
+      main {
+        border-radius: 0;
+        padding: 1rem;
+      }
+      .sidebar {
+        min-height: auto;
+        position: relative;
+        box-shadow: none;
+        background: #343a40;
+        background-image: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <nav class="col-md-2 d-none d-md-block sidebar">
+        <div class="position-sticky pt-3">
+          <h4>ANPR Dashboard</h4>
+          <a href="#" class="active">Dashboard</a>
+          <a href="#">My Complaints</a>
+          <a href="#">Recognition Logs</a>
+          <a href="#">Profile</a>
+          <a href="#">Logout</a>
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="col-md-10 ms-sm-auto px-md-4">
+        <h2>Welcome, John Doe</h2>
+
+        <!-- Dashboard Cards -->
+        <div class="row mb-4">
+          <div class="col-md-4 mb-3">
+            <div class="dashboard-card">
+              <h5>Total Complaints</h5>
+              <p>5</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="dashboard-card">
+              <h5>Pending Complaints</h5>
+              <p>2</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="dashboard-card">
+              <h5>Recent Plate Recognitions</h5>
+              <p>12</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Recognition Logs Table -->
+        <div class="card mb-4">
+          <div class="card-header">Recent Recognition Logs</div>
+          <div class="card-body p-0">
+            <table class="table table-striped mb-0">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Plate Number</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2025-04-18</td>
+                  <td>ABC-123</td>
+                  <td><span class="badge bg-success">Matched</span></td>
+                </tr>
+                <tr>
+                  <td>2025-04-17</td>
+                  <td>XYZ-987</td>
+                  <td><span class="badge bg-danger">Not Matched</span></td>
+                </tr>
+                <tr>
+                  <td>2025-04-16</td>
+                  <td>LMN-456</td>
+                  <td><span class="badge bg-warning text-dark">Pending</span></td>
+                </tr>
+                <!-- Add more rows as needed -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
+a

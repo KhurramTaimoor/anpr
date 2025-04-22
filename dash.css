@@ -1,0 +1,165 @@
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #f8f9fa;
+      margin: 0;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      background-color: #121c2b;
+      color: white;
+      min-height: 100vh;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+    }
+
+    .sidebar img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .sidebar h4 {
+      margin-bottom: 2rem;
+      font-weight: bold;
+      color: #00bcd4;
+    }
+
+    .sidebar a {
+      color: #ddd;
+      text-decoration: none;
+      display: block;
+      padding: 0.75rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar a:hover, .sidebar a.active {
+      background-color: #00bcd4;
+      color: #000;
+    }
+
+    .btn-custom {
+      background-color: #00bcd4;
+      color: white;
+      border-radius: 8px;
+      padding: 10px 20px;
+      transition: background 0.3s ease;
+    }
+
+    .btn-custom:hover {
+      background-color: #019aa8;
+    }
+
+    .card {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: none;
+      color: #fff;
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-control, .form-select {
+      background-color: #1c2b3a;
+      border: 1px solid #00bcd4;
+      color: white;
+    }
+
+    label {
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+
+    
+    .table th, .table td {
+      border-color: #00bcd4;
+    }
+    /* Responsive styles for mobile devices */
+@media (max-width: 768px) {
+    .sidebar {
+      min-height: auto;
+      padding: 1rem 0.5rem;
+    }
+  
+    .car-image {
+      max-height: 180px;
+      object-fit: cover;
+    }
+  
+    .car-details {
+      font-size: 0.9rem;
+    }
+  
+    .row {
+      flex-direction: column;
+    }
+  
+    .col-md-3, .col-md-9 {
+      width: 100%;
+      max-width: 100%;
+    }
+  
+    h2 {
+      font-size: 1.5rem;
+    }
+  
+    .btn {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  
+    .table {
+      font-size: 0.85rem;
+      overflow-x: auto;
+      display: block;
+      white-space: nowrap;
+    }
+  
+    .form-control, .form-select {
+      font-size: 0.9rem;
+    }
+  }
+  .card-custom {
+    background-color: #f0f2f5;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+
+  .badge-pending {
+    background-color: #ffc107;
+  }
+
+  .badge-progress {
+    background-color: #17a2b8;
+  }
+
+  .badge-detected {
+    background-color: #28a745;
+  }
+
+  .badge-notfound {
+    background-color: #dc3545;
+  }
+
+  .table thead {
+    background-color: #e3e6ea;
+  }
+
+  .btn-custom {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+  }
+
+  .btn-custom:hover {
+    background-color: #0c57c6;
+  }
+
+  .card-custom {
+    background-color: #f0f2f5;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }

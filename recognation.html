@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recognition Log - ANPR Dashboard</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="dash.css">
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-md-3 sidebar">
+        <h4>ANPR Dashboard</h4>
+        <a href="dash.html"><i class="fas fa-dashboard me-2"></i> Dashboard</a>
+        <a href="complaint.html"><i class="fas fa-car me-2"></i> Launch A Complaint</a>
+        <a href="recognition-log.html" class="active"><i class="fas fa-file-alt me-2"></i> Recognition Log</a>
+        <a href="#"><i class="fas fa-user me-2"></i> Profile</a>
+        <a href="#"><i class="fas fa-sign-out-alt me-2"></i> Logout</a>
+      </div>
+
+      <!-- Main Content -->
+      <div class="col-md-9 p-4">
+        <h2 class="mb-4">Recognition Log</h2>
+
+        <div class="card p-4 card-custom "style= "background: linear-gradient(to right, #0f2027, #203a43, #2c5364)";>
+          <h5 class="mb-3">My Complaint History</h5>
+          <table class="table table-bordered mt-3 table-dark">
+            <thead>
+              <tr>
+                <th>Complaint ID</th>
+                <th>Car</th>
+                <th>Reg No</th>
+                <th>Date & Time</th>
+                <th>Status</th>
+                <th>Remarks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#C-001</td>
+                <td>Toyota Corolla Altis 1.6 (White)</td>
+                <td>ABC-123</td>
+                <td>2025-04-18 10:45 AM</td>
+                <td><span class="badge badge-pending">Pending</span></td>
+                <td>Complaint registered. Awaiting processing.</td>
+              </tr>
+              <tr>
+                <td>#C-002</td>
+                <td>Honda Civic 1.8 (Black)</td>
+                <td>XYZ-789</td>
+                <td>2025-04-12 6:30 PM</td>
+                <td><span class="badge badge-progress">In Progress</span></td>
+                <td>AI model scanning CCTV feeds.</td>
+              </tr>
+              <tr>
+                <td>#C-003</td>
+                <td>Suzuki Mehran VX (Silver)</td>
+                <td>LMN-456</td>
+                <td>2025-04-05 9:00 PM</td>
+                <td><span class="badge badge-detected">Detected</span></td>
+                <td>Vehicle found near I-10 signal. Authorities notified.</td>
+              </tr>
+              <tr>
+                <td>#C-004</td>
+                <td>Kia Sportage (White)</td>
+                <td>KIA-2025</td>
+                <td>2025-03-28 3:15 PM</td>
+                <td><span class="badge badge-notfound">Not Found</span></td>
+                <td>No match found in current feeds.</td>
+              </tr>
+              <!-- More rows can be added dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
