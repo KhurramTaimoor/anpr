@@ -80,15 +80,55 @@ document.addEventListener('DOMContentLoaded', function () {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       })
-      .then(response => response.json())
-      .then(result => {
-        alert(result.message);
-        window.location.href = 'login.html';
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        alert('Error registering user.');
-      });
+        .then(response => response.json())
+        .then(result => {
+          if (result.message.includes("OTP")) {
+            alert('Registration successful! Please check your email for OTP.');
+
+            // Show OTP Input
+            const otpFormHtml = `
+              <div class="mb-3">
+                <label for="otp" class="form-label">Enter OTP</label>
+                <input type="text" class="form-control" id="otp" placeholder="Enter OTP sent to your email" />
+                <div class="error-message text-danger small mt-1"></div>
+              </div>
+              <button type="submit" class="btn btn-custom w-100" id="verify-otp-btn">Verify OTP</button>
+            `;
+            document.querySelector('.signup-card').innerHTML = otpFormHtml;
+
+            // Handle OTP Submit
+            document.getElementById('verify-otp-btn').addEventListener('click', function (e) {
+              e.preventDefault();
+              const otp = document.getElementById('otp').value.trim();
+              console.log(otp);
+
+              if (otp === '') {
+                alert('Please enter the OTP.');
+                return;
+              }
+
+              fetch('http://localhost:3000/verify-otp', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, otp })
+              })
+                .then(res => res.json())
+                .then(result => {
+                  if (result.success) {
+                    alert('OTP verified successfully! You are now verified.');
+                    window.location.href = 'login.html';
+                  } else {
+                    alert(result.message);
+                  }
+                })
+                .catch(error => {
+                  console.error('Error:', error);
+                  alert('Error verifying OTP. Please try again.');
+                });
+            });
+          }
+        })
+        .catch(error => console.error('Error:', error));
     }
   });
 });
