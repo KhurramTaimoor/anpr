@@ -1,165 +1,174 @@
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      color: #f8f9fa;
-      margin: 0;
-      min-height: 100vh;
-    }
+/* Global Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #e3f2fd, #bbdefb, #90caf9); /* Lighter blue gradient */
+  color: #212121; /* Dark text for better readability */
+  margin: 0;
+  min-height: 100vh;
+}
 
-    .sidebar {
-      background-color: #121c2b;
-      color: white;
-      min-height: 100vh;
-      padding: 1rem;
-      position: sticky;
-      top: 0;
-    }
+.sidebar {
+    background-color: #ffffff; /* Light background for sidebar */
+  color: #212121; /* Dark text */
+  min-height: 100vh;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+}
 
-    .sidebar img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 1rem;
-    }
+.sidebar img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
 
-    .sidebar h4 {
-      margin-bottom: 2rem;
-      font-weight: bold;
-      color: #00bcd4;
-    }
+.sidebar h4 {
+  margin-top: 80px;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  color: #1a73e8; /* Lighter accent color */
+}
 
-    .sidebar a {
-      color: #ddd;
-      text-decoration: none;
-      display: block;
-      padding: 0.75rem;
-      border-radius: 10px;
-      transition: all 0.3s ease;
-    }
+.sidebar a {
+  margin-top: 30px;
+  color: #555; /* Dark gray for text */
+  text-decoration: none;
+  display: block;
+  padding: 0.75rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
 
-    .sidebar a:hover, .sidebar a.active {
-      background-color: #00bcd4;
-      color: #000;
-    }
+.sidebar a:hover, .sidebar a.active {
+  background-color: #1a73e8; /* Blue for hover */
+  color: white;
+}
 
-    .btn-custom {
-      background-color: #00bcd4;
-      color: white;
-      border-radius: 8px;
-      padding: 10px 20px;
-      transition: background 0.3s ease;
-    }
+.btn-custom {
+  background-color: #1a73e8;
+  color: white;
+  border-radius: 8px;
+  padding: 10px 20px;
+  transition: background 0.3s ease;
+}
 
-    .btn-custom:hover {
-      background-color: #019aa8;
-    }
+.btn-custom:hover {
+  background-color: #0c57c6;
+}
 
-    .card {
-      background-color: rgba(255, 255, 255, 0.05);
-      border: none;
-      color: #fff;
-      border-radius: 10px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-    }
+.card {
+  background-color: rgba(255, 255, 255, 0.95); /* Light background for cards */
+  border: 1px solid #e0e0e0; /* Light border for a clean look */
+  color: #212121;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* Light shadow for cards */
+}
 
-    .form-control, .form-select {
-      background-color: #1c2b3a;
-      border: 1px solid #00bcd4;
-      color: white;
-    }
+.form-control, .form-select {
+  background-color: #f5f5f5; /* Light gray background for form fields */
+  border: 1px solid #1a73e8;
+  color: #212121; /* Dark text for form fields */
+}
 
-    label {
-      margin-top: 0.5rem;
-      font-weight: 500;
-    }
+label {
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
 
-    
-    .table th, .table td {
-      border-color: #00bcd4;
-    }
-    /* Responsive styles for mobile devices */
+.table th, .table td {
+  border-color: #e0e0e0; /* Lighter border color */
+}
+
+/* Responsive styles for mobile devices */
 @media (max-width: 768px) {
-    .sidebar {
-      min-height: auto;
-      padding: 1rem 0.5rem;
-    }
-  
-    .car-image {
-      max-height: 180px;
-      object-fit: cover;
-    }
-  
-    .car-details {
-      font-size: 0.9rem;
-    }
-  
-    .row {
-      flex-direction: column;
-    }
-  
-    .col-md-3, .col-md-9 {
-      width: 100%;
-      max-width: 100%;
-    }
-  
-    h2 {
-      font-size: 1.5rem;
-    }
-  
-    .btn {
-      width: 100%;
-      margin-bottom: 10px;
-    }
-  
-    .table {
-      font-size: 0.85rem;
-      overflow-x: auto;
-      display: block;
-      white-space: nowrap;
-    }
-  
-    .form-control, .form-select {
-      font-size: 0.9rem;
-    }
-  }
-  .card-custom {
-    background-color: #f0f2f5;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  .sidebar {
+    min-height: auto;
+    padding: 1rem 0.5rem;
   }
 
-  .badge-pending {
-    background-color: #ffc107;
+  .car-image {
+    max-height: 180px;
+    object-fit: cover;
   }
 
-  .badge-progress {
-    background-color: #17a2b8;
+  .car-details {
+    font-size: 0.9rem;
   }
 
-  .badge-detected {
-    background-color: #28a745;
+  .row {
+    flex-direction: column;
   }
 
-  .badge-notfound {
-    background-color: #dc3545;
+  .col-md-3, .col-md-9 {
+    width: 100%;
+    max-width: 100%;
   }
 
-  .table thead {
-    background-color: #e3e6ea;
+  h2 {
+    font-size: 1.5rem;
   }
 
-  .btn-custom {
-    background-color: #1a73e8;
-    color: white;
-    border: none;
+  .btn {
+    width: 100%;
+    margin-bottom: 10px;
   }
 
-  .btn-custom:hover {
-    background-color: #0c57c6;
+  .table {
+    font-size: 0.85rem;
+    overflow-x: auto;
+    display: block;
+    white-space: nowrap;
   }
 
-  .card-custom {
-    background-color: #f0f2f5;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  .form-control, .form-select {
+    font-size: 0.9rem;
   }
+}
+
+/* Custom Card Styling */
+.card-custom {
+  background-color: #fafafa; /* Even lighter background */
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Badge Styling */
+.badge-pending {
+  background-color: #ffeb3b; /* Lighter yellow */
+}
+
+.badge-progress {
+  background-color: #17a2b8;
+}
+
+.badge-detected {
+  background-color: #28a745;
+}
+
+.badge-notfound {
+  background-color: #dc3545;
+}
+
+.table thead {
+  background-color: #f1f1f1; /* Light gray header for table */
+}
+
+/* Custom Button Styling */
+.btn-custom {
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+}
+
+.btn-custom:hover {
+  background-color: #0c57c6;
+}
+
+.card-custom {
+  background-color: #fafafa;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
