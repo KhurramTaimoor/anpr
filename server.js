@@ -1,10 +1,11 @@
 const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql2');
+const nodemailer = require('nodemailer');
+const crypto = require('crypto');
 const app = express();
 const port = 3000;
 
-// Enable CORS
 app.use(cors());
 app.use(express.json());
 
@@ -12,8 +13,8 @@ app.use(express.json());
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: '', // set your MySQL root password
-  database: 'vehicle_system' // set your actual DB name
+  password: '',
+  database: 'vehicle_system'
 });
 
 db.connect((err) => {
@@ -21,46 +22,68 @@ db.connect((err) => {
   console.log('Connected to the database');
 });
 
-// POST route to handle signup
+// Nodemailer
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'antitheiftsystem@gmail.com',
+    pass: 'vxonkqnuczzmgaix'
+  }
+});
+
+// Generate OTP
+function generateOTP() {
+  return crypto.randomInt(100000, 999999).toString();
+}
+
+// POST /signup
 app.post('/signup', (req, res) => {
   const { name, email, phone, password } = req.body;
+  const otp = generateOTP();
 
-  const sql = 'INSERT INTO users (name, email, phone, password) VALUES (?, ?, ?, ?)';
-  db.query(sql, [name, email, phone, password], (err, result) => {
+  const sql = 'INSERT INTO users (name, email, phone, password, otp) VALUES (?, ?, ?, ?, ?)';
+  db.query(sql, [name, email, phone, password, otp], (err, result) => {
     if (err) {
-      console.error('Error inserting into DB:', err);
-      res.status(500).json({ message: 'Signup failed.' });
-    } else {
-      res.json({ message: 'User registered successfully!' });
+      console.error('DB Error:', err);
+      return res.status(500).json({ message: 'Signup failed.' });
     }
+
+    const mailOptions = {
+      from: 'antitheiftsystem@gmail.com',
+      to: email,
+      subject: 'Vehicle Anti-Theft System - OTP Verification',
+      text: `Hello ${name},\n\nYour OTP is: ${otp}\n\nUse this to complete your registration.\n\nThanks.`
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) console.error('Email Error:', error);
+      else console.log('OTP Email Sent:', info.response);
+    });
+
+    res.json({ message: 'User registered successfully! Please check your email for OTP.' });
   });
 });
 
-// POST route to handle login
-app.post('/login', (req, res) => {
-  const { email, password } = req.body;
+// POST /verify-otp
+app.post('/verify-otp', (req, res) => {
+  const { email, otp } = req.body;
 
-  const sql = 'SELECT * FROM users WHERE email = ?';
-  db.query(sql, [email], (err, results) => {
+  const sql = 'SELECT * FROM users WHERE email = ? AND otp = ?';
+  db.query(sql, [email, otp], (err, results) => {
     if (err) {
-      console.error('Error querying DB:', err);
-      res.status(500).json({ message: 'Login failed.' });
-    } else if (results.length === 0) {
-      res.status(401).json({ message: 'User not found' });
-    } else {
-      const user = results[0];
-
-      // Check if passwords match (this is simple, use bcrypt for production)
-      if (password !== user.password) {
-        res.status(401).json({ message: 'Incorrect password' });
-      } else {
-        res.status(200).json({ message: 'Login successful' });
-      }
+      console.error('DB Error:', err);
+      return res.status(500).json({ message: 'Verification failed.' });
     }
+
+    if (results.length === 0) {
+      return res.status(400).json({ success: false, message: 'Invalid OTP. Please try again.' });
+    }
+
+    res.json({ success: true, message: 'OTP verified successfully!' });
   });
 });
 
-// Start the server
+// Start server
 app.listen(port, () => {
-  console.log("Server running at http://localhost:${port}");
-});  
+  console.log(`Server running on http://localhost:${port}`);
+});
