@@ -172,3 +172,17 @@ label {
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
+/* Mobile (up to 767px) */
+@media only screen and (max-width: 767px) {
+  /* Mobile styles here */
+}
+
+/* Tablet (768px to 1024px) */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  /* Tablet styles here */
+}
+
+/* Desktop (1025px and above) */
+@media only screen and (min-width: 1025px) {
+  /* Desktop styles here */
+}
